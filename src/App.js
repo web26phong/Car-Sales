@@ -8,6 +8,7 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
 import {carReducer} from "./reducers/carReducer";
+import {addFeature} from "./actions/carActions";
 
 export const store = createStore(carReducer);
 console.log("This is the initial state in store: ",store.getState())
@@ -29,7 +30,7 @@ const App = (props) => {
         <AddedFeatures car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={props.additionalFeatures} />
+        <AdditionalFeatures addFeature={props.addFeature} additionalFeatures={props.additionalFeatures} />
         <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
@@ -44,4 +45,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, {addFeature})(App);
