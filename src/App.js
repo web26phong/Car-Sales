@@ -8,7 +8,7 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
 import {carReducer} from "./reducers/carReducer";
-import {addFeature} from "./actions/carActions";
+import {addFeature, removeFeature} from "./actions/carActions";
 
 export const store = createStore(carReducer);
 console.log("This is the initial state in store: ",store.getState())
@@ -27,7 +27,7 @@ const App = (props) => {
     <div className="boxes">
       <div className="box">
         <Header car={props.car} />
-        <AddedFeatures car={props.car} />
+        <AddedFeatures car={props.car} removeFeature={props.removeFeature}/>
       </div>
       <div className="box">
         <AdditionalFeatures addFeature={props.addFeature} additionalFeatures={props.additionalFeatures} />
@@ -45,4 +45,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {addFeature})(App);
+export default connect(mapStateToProps, {addFeature, removeFeature})(App);
